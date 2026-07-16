@@ -868,27 +868,30 @@ p {
 }
 
 #my-id {
-	width: 500px;
-	border: 1px solid black;
+    width: 500px;
+    border: 1px solid black;
 }
 
 .my-class {
-	color: blue;
+    color: blue;
 }
-*/
+
+/* 요소:p 같은거 { 속성 : 속성값 ; } */
 
 
-/*
-요소:p 같은거 { 속성 : 속성값 ; }
-*/
-CSS
-/* 커스텀 태그가 웹뷰에서도 정상 영역을 차지하고 보이도록 강제 설정 */
+/* ==========================================
+   스푼 앱 웹뷰 다크모드 버그 및 아이콘/선택 버튼 색상 패치
+========================================== */
+
+/* 1. 커스텀 태그가 웹뷰에서도 정상 영역을 차지하고 보이도록 강제 설정 */
 formatted-string {
     display: inline-block !important;
     visibility: visible !important;
     opacity: 1 !important;
     color: #ffffff !important; /* 글자색이 투명해지거나 묻히는 것 방지 */
 }
+
+/* 2. 우측 상단 삼선(三) 메뉴 아이콘 강제 노출 */
 .nav-menu-icon, 
 .nav-menu-btn, 
 .sidebar-toggle-btn,
@@ -899,20 +902,20 @@ formatted-string {
     opacity: 1 !important;              /* 투명도 100% */
 }
 
-/* 2. 장르/정렬 버튼이 선택(Active)되었을 때 하얗게 타버리는 현상 방지 */
+/* 3. 장르/정렬 버튼이 선택(Active)되었을 때 하얗게 타버리는 현상 방지 */
 .genre-btn.active, 
 .genre-btn:active,
 .sort-btn.active,
 .sort-btn:active,
 button[active],
 span[active],
-.active-filter { /* 사용 중이신 선택 스타일 클래스명 대응 */
+.active-filter { 
     background-color: #333333 !important; /* 선택 시 배경을 어두운 회색으로 고정 */
     color: #ffffff !important;            /* 글자색은 무조건 흰색 */
     border: 1px solid #555555 !important; /* 경계선 부여 */
 }
 
-/* 3. 기본 버튼 영역이 하얗게 채워지는 것 방지 */
+/* 4. 기본 버튼 영역이 하얗게 채워지는 것 방지 */
 .genre-div button, 
 .sort-div button,
 .filter-btn,
