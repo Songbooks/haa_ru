@@ -2,6 +2,30 @@
 
 <html>
 		<head>
+			<script type="text/javascript">
+        (function() {
+            var userAgent = navigator.userAgent.toLowerCase();
+            
+            // 1. 스푼(Spoon) 앱 내부 브라우저인지 감지
+            // 스푼 인앱 웹뷰는 보통 'spoon' 이라는 고유 문자열을 useragent에 포함합니다.
+            if (userAgent.indexOf('spoon') !== -1 || userAgent.indexOf('kakaotalk') !== -1) {
+                var targetUrl = window.location.href;
+                
+                // 2. 안드로이드 기기일 때: 삼성 인터넷이나 크롬으로 강제 실행 구문
+                if (userAgent.indexOf('android') !== -1) {
+                    // intent 브라우저 스키마를 사용하여 외부 브라우저 호출
+                    var intentUrl = 'intent://' + targetUrl.replace(/https?:\/\//, '') + '#Intent;scheme=https;package=com.android.chrome;end';
+                    window.location.href = intentUrl;
+                } 
+                // 3. 아이폰(iOS) 기기일 때: 사파리(Safari)로 우회 유도 또는 강제 실행
+                else if (userAgent.indexOf('iphone') !== -1 || userAgent.indexOf('ipad') !== -1) {
+                    // iOS는 보안상 강제 외부 브라우저 호출이 막혀있는 경우가 많아, 사파리로 열도록 주소창을 변형합니다.
+                    // ftp나 다른 프로토콜 우회를 시도하거나, 아래와 같이 주소를 변경합니다.
+                    window.location.href = 'x-web-search://?' + targetUrl;
+                }
+            }
+        })();
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="서글러의 노래책">
