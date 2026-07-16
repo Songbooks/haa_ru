@@ -881,3 +881,11 @@ p {
 /*
 요소:p 같은거 { 속성 : 속성값 ; }
 */
+CSS
+/* 커스텀 태그가 웹뷰에서도 정상 영역을 차지하고 보이도록 강제 설정 */
+formatted-string {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #ffffff !important; /* 글자색이 투명해지거나 묻히는 것 방지 */
+}
