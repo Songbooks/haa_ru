@@ -461,6 +461,8 @@ i#menu-icon {
 	position: absolute;
     left: 0;
     top: 0;
+	/* [추가] 모바일이 아닐 때는 마우스 클릭 이벤트를 통과시켜 본문 검색/정렬이 클릭되도록 함 */
+    pointer-events: none;
 }
 .sidebar {
 	width: var(--chakra-sizes-md);
@@ -479,6 +481,8 @@ i#menu-icon {
 	/* ──────────────── [모바일/데스크톱 드래그 스크롤 활성화] ──────────────── */
 	overflow-y: auto;                    /* 내용이 많아지면 세로 스크롤바 자동 생성 */
 	-webkit-overflow-scrolling: touch;   /* 모바일 기기에서 부드러운 터치 스크롤 지원 */
+	/* [추가] 사이드바 자체는 클릭/드래그가 가능해야 하므로 pointer-events를 복원 */
+	pointer-events: auto;
 }
 }
 @media screen and (max-width: 1020px) { 
@@ -489,15 +493,19 @@ i#menu-icon {
 		bottom: 0;
 		left: 0;
 		transition-property: opacity;
-		z-index: 5;
+		z-index: 4;
 		opacity: 1;
-		background: var(--app-drawer-scrim-background, rgba(0, 0, 0, 0.5));			
+		background: var(--app-drawer-scrim-background, rgba(0, 0, 0, 0.5));		
+		/* [추가] 모바일에서 뒷배경(Scrim)을 누르면 클릭 이벤트가 먹히도록 설정 */
+		pointer-events: auto;
 	}
 	.sidebar-wrapper-hide {
 		top: unset;
 		right: unset;
 		bottom: unset;
 		left: unset;
+		/* [추가] 사이드바가 닫혔을 때는 터치 이벤트를 완전히 통과시킴 */
+		pointer-events: none;
 	}
 	.sidebar {
 		margin-top: var(--chakra-sizes-20);
@@ -508,6 +516,8 @@ i#menu-icon {
 	.sidebar-hide {
 		/*display: block !important;*/
 		transform: translateX(calc(-1rem - var(--chakra-sizes-md)));
+		/* [추가] 사이드바가 숨겨졌을 때는 스크롤 및 터치가 안 되도록 차단 */
+		pointer-events: none;
 	}
 }
 .sidebar-header {
