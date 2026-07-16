@@ -849,7 +849,10 @@ genre.genre-list {
 		border-bottom-color: var(--chakra-colors-gray-200);
 		position: fixed;
 		top: 0;
-		z-index: 5;
+		
+		/* ──────────────── [중요] 레이어 순서를 최상위로 올립니다 ──────────────── */
+		z-index: 10;                         /* 5에서 10으로 올려서 사이드바보다 위에 뜨게 만듭니다 */
+		
 		width: 100%;
 	}
 	.main-content {
