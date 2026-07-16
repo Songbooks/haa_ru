@@ -889,3 +889,34 @@ formatted-string {
     opacity: 1 !important;
     color: #ffffff !important; /* 글자색이 투명해지거나 묻히는 것 방지 */
 }
+.nav-menu-icon, 
+.nav-menu-btn, 
+.sidebar-toggle-btn,
+.nav-menu-btn span {
+    color: #ffffff !important;          /* 텍스트 아이콘인 경우 흰색 강제 */
+    background-color: transparent !important;
+    filter: invert(0%) !important;      /* 웹뷰의 강제 색상 반전 차단 */
+    opacity: 1 !important;              /* 투명도 100% */
+}
+
+/* 2. 장르/정렬 버튼이 선택(Active)되었을 때 하얗게 타버리는 현상 방지 */
+.genre-btn.active, 
+.genre-btn:active,
+.sort-btn.active,
+.sort-btn:active,
+button[active],
+span[active],
+.active-filter { /* 사용 중이신 선택 스타일 클래스명 대응 */
+    background-color: #333333 !important; /* 선택 시 배경을 어두운 회색으로 고정 */
+    color: #ffffff !important;            /* 글자색은 무조건 흰색 */
+    border: 1px solid #555555 !important; /* 경계선 부여 */
+}
+
+/* 3. 기본 버튼 영역이 하얗게 채워지는 것 방지 */
+.genre-div button, 
+.sort-div button,
+.filter-btn,
+.search-div input {
+    background-color: #1e1e1e !important; /* 어두운 배경색 지정 */
+    color: #ffffff !important;            /* 글자색은 흰색 */
+}
