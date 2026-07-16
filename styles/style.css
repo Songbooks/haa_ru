@@ -464,7 +464,8 @@ i#menu-icon {
 }
 .sidebar {
 	width: var(--chakra-sizes-md);
-	height: var(--chakra-sizes-full);
+	height: 100vh;                       /* [수정] 100% 대신 화면 전체 높이(100vh)로 설정 */
+	max-height: 100vh;                   /* [추가] 최대 높이를 화면 높이로 제한 */
 	background: var(--item-background);
 	color: aliceblue;
 	position: fixed;
@@ -472,9 +473,13 @@ i#menu-icon {
 	flex-direction: column;
 	flex-wrap: nowrap;
 	align-items: center;
-	padding-bottom: 5px;
+	padding-bottom: 24px;                /* [수정] 맨 아래 글씨가 잘리지 않도록 여백 확보 */
 	transform: translateX(0px);
 	transition: transform 0.5s cubic-bezier(.9,-0.3,.1,1.3);
+	/* ──────────────── [모바일/데스크톱 드래그 스크롤 활성화] ──────────────── */
+	overflow-y: auto;                    /* 내용이 많아지면 세로 스크롤바 자동 생성 */
+	-webkit-overflow-scrolling: touch;   /* 모바일 기기에서 부드러운 터치 스크롤 지원 */
+}
 }
 @media screen and (max-width: 1020px) { 
 	.sidebar-wrapper {
@@ -496,6 +501,9 @@ i#menu-icon {
 	}
 	.sidebar {
 		margin-top: var(--chakra-sizes-20);
+		/* [추가] 모바일 상단 바 높이만큼을 전체 화면 높이(100vh)에서 빼서 하단 잘림 방지 */
+		height: calc(100vh - var(--chakra-sizes-20));
+		max-height: calc(100vh - var(--chakra-sizes-20));
 	}
 	.sidebar-hide {
 		/*display: block !important;*/
