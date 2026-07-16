@@ -3,68 +3,38 @@
 <html>
 		<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="서글러의 노래책">
     <title>서글러의 노래책</title>
 
-    <!-- 1. 폰트 파일은 기존대로 유지 -->
+    <!-- 1. 기존에 잘 작동하던 CSS 파일들 그대로 다시 불러오기 (원래 디자인 복구) -->
     <link href="styles/fonts.css" rel="stylesheet" type="text/css">
-
-    <!-- 2. 외부 CSS를 못 읽는 스푼 앱 웹뷰를 위해 HTML 내부에 직접 디자인 주입 -->
-    <style>
-        /* 기본 변수 선언 (parameters.css 역할) */
-        :root {
-            --body-background: #010101;
-            --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-        }
-
-        /* 기본 바디 설정 */
-        body {
-            background-color: var(--body-background) !important;
-            color: #ffffff !important;
-            font-family: var(--font-sans);
-            margin: 0;
-            padding: 0;
-        }
-
-        /* 텍스트 및 제목 강제 흰색 지정 */
-        formatted-string, .song-name, .artist-name, .random-song-name, .random-artist-name {
-            color: #ffffff !important;
-            display: inline-block !important;
-        }
-
-        /* 노래 카드 레이아웃 강제 활성화 (정상 화면의 회색 박스 복구) */
-        .song-div, .random-song {
-            background-color: #242424e6 !important;
-            border-radius: 12px !important;
-            padding: 12px !important;
-            margin: 10px !important;
-            display: flex !important;
-            align-items: center !important;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        /* 앨범 이미지와 글씨 간격 확보 */
-        .album-cover-div {
-            flex-shrink: 0 !important;
-            margin-right: 15px !important;
-            width: 80px !important; /* 모바일 기준 적정 크기 고정 */
-            height: 80px !important;
-        }
-
-        /* 정보 텍스트 영역 */
-        .info-div {
-            display: flex !important;
-            flex-direction: column !important;
-            justify-content: center !important;
-        }
-    </style>
-
-    <!-- 3. 혹시 모를 일반 브라우저 대응을 위해 기존 CSS 링크도 그대로 둡니다 (하이브리드 백업) -->
     <link href="styles/parameters.css" rel="stylesheet" type="text/css">
     <link href="styles/style.css" rel="stylesheet" type="text/css">
-	</head>
 
+    <!-- 2. 오직 스푼 앱의 '검은 글씨(보호색) 버그'만 해결하기 위한 핀포인트 코드 -->
+    <style>
+        /* 원래 작성하신 가로/세로 레이아웃은 건드리지 않고, */
+        /* 스푼 앱 웹뷰가 글씨를 검은색이나 투명으로 바꾸는 것만 원천 차단합니다. */
+        
+        body {
+            background-color: #010101 !important; /* 배경을 무조건 검은색으로 고정 */
+        }
+
+        /* 노래 제목, 가수 이름, 커스텀 태그 안의 모든 텍스트를 무조건 흰색으로 강제 */
+        formatted-string, 
+        .song-name, 
+        .artist-name, 
+        .random-song-name, 
+        .random-artist-name,
+        .random-list-title,
+        .main-list-title,
+        span {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important; /* 아이폰/안드로이드 웹뷰 글자색 강제 채우기 */
+        }
+    </style>
+</head>
 	<body>
 		<div class="base">
 			<!----------------------------------- 본문 -->
