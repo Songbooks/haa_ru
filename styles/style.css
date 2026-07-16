@@ -876,19 +876,6 @@ p {
     color: blue;
 }
 
-/* 요소:p 같은거 { 속성 : 속성값 ; } */
-
-
-/* ==========================================
-   스푼 앱 웹뷰 다크모드 버그 및 아이콘/선택 버튼 색상 패치
-========================================== */
-
-/* 1. 커스텀 태그가 웹뷰에서도 정상 영역을 차지하고 보이도록 강제 설정 */
-formatted-string {
-    display: inline-block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    color: #ffffff !important; /* 글자색이 투명해지거나 묻히는 것 방지 */
 }
 
 /* 2. 우측 상단 삼선(三) 메뉴 아이콘 강제 노출 */
