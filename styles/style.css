@@ -483,6 +483,16 @@ i#menu-icon {
 }
 @media screen and (max-width: 1020px) { 
 	.sidebar-wrapper {
+		.nav .nav-head h1 formatted-string.sidebar-header-text {
+		font-size: 1.8rem !important; /* 글자 크기를 모바일 화면에 맞게 대폭 축소 */
+		line-height: 1.2 !important;
+	}
+	.nav {
+		height: 60px !important; /* 상단바 높이도 적절하게 고정 */
+	}
+	.main-content {
+		margin-top: 60px !important; /* 상단바가 줄어든 만큼 본문 위치 조절 */
+	}
 		position: fixed;
 		top: 0;
 		right: 0;
@@ -739,20 +749,40 @@ genre.genre-list {
     margin: 0 auto;
 }
 .song-div {
-	background: var(--item-background); 
-	color: white;
-	width: calc( ( var(--ytmusic-content-width) / 3) - 2 * 0.5rem );
-	margin: var(--chakra-space-2);
-	box-shadow: var(--chakra-shadows-sm);
-	border-radius: var( --chakra-radii-lg);
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	justify-content: flex-start;
-}
-@media screen and (max-width: 1020px) { 
-	.song-div {
-		width: calc( ( var(--ytmusic-content-width) - 12px) );
+		width: calc( ( var(--ytmusic-content-width) - 12px) ) !important;
+		display: flex !important;
+		align-items: center !important; /* 세로 정렬 기준을 중앙으로 맞춤 */
+		height: auto !important;
+	}
+	/* 앨범 커버 이미지 크기가 글자 영역을 침범하지 않도록 고정 */
+	.album-cover-div {
+		width: 70px !important; 
+		height: 70px !important;
+		min-width: 70px !important;
+	}
+	/* 노래 제목과 가수 정보가 들어가는 상자 크기 확보 */
+	.info-div {
+		width: calc(100% - 80px) !important;
+		padding: 8px !important;
+		display: flex !important;
+		flex-direction: column !important;
+		justify-content: center !important;
+	}
+	/* 모바일에서 제목이 무조건 보이도록 설정 */
+	.song-name {
+		font-size: 1.2rem !important; /* 스푼 앱 내에서도 보일 수 있는 적절한 크기 */
+		min-height: auto !important;   /* 빈 공간 차지하는 최소높이 해제 */
+		white-space: normal !important;/* 제목이 길면 아래 줄로 넘어가게 설정 */
+		word-break: break-all !important;
+		line-height: 1.3 !important;
+	}
+	/* 모바일에서 가수명이 무조건 보이도록 설정 */
+	.artist-name {
+		font-size: 1.0rem !important;
+		margin-top: 4px !important;
+		white-space: nowrap !important;
+		overflow: hidden !important;
+		text-overflow: ellipsis !important; /* 너무 길면 ... 처리 */
 	}
 }
 .album-cover-div {
